@@ -107,7 +107,7 @@ sequenceDiagram
 
 ```bash
 # Clone the repository
-uv add git+https://github.com/your-repo/meeting-scheduler-mcp.git
+uv add git+https://github.com/seb-schulz/meeting-scheduler-mcp.git
 
 # Install dependencies
 uv sync

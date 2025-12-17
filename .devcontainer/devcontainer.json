@@ -1,10 +1,6 @@
 {
-  "name": "meeting-scheduler-mcp",
-  // "image": "ghcr.io/sebatec-eu/python-devcontainer:1",
-  "dockerComposeFile": "docker-compose.yaml",
-  "service": "app",
-  "runServices": ["app"],
-  "workspaceFolder": "/workspaces/meeting-scheduler-mcp",
+  "name": "meeting-scheduler-mcp-2",
+  "image": "ghcr.io/sebatec-eu/python-devcontainer:1",
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
       "version": "os-provided",
@@ -26,11 +22,7 @@
       "extensions": ["redhat.vscode-yaml", "charliermarsh.ruff"]
     }
   },
-  "containerEnv": {
-    "VIBE_HOME": "${containerWorkspaceFolder}/.vibe"
-  },
-  // "runArgs": ["--userns=keep-id"],
+  "runArgs": ["--userns=keep-id"],
   "containerUser": "vscode",
-  "updateRemoteUserUID": true,
   "postCreateCommand": "uv pip install -e \".[dev]\" && uv tool install mistral-vibe"
 }
