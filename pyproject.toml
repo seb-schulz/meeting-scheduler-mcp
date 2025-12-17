@@ -1,0 +1,36 @@
+[project]
+name = "meeting-scheduler-mcp"
+version = "0.1.0"
+description = "FastMCP-basierter Meeting Scheduler mit WSGI-Support"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastmcp>=2.14.0",
+    "pydantic>=2.12.5",
+    "pyyaml>=6.0.3",
+    "python-dotenv>=1.0.1",
+    "pandas>=2.3.3",
+    "freezegun>=1.5.5",
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov=meeting_scheduler_mcp --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["src/meeting_scheduler_mcp"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.14.9",
+    "pytest-mock>=3.14.0",
+    "ipykernel>=7.1.0",
+    "pytest-cov>=4.1.0",
+]
