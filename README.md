@@ -170,51 +170,42 @@ uv run python -m meeting_scheduler_mcp
 
 ## API Tools
 
-### 1. `search_emails_tool`
+### 1. `search_emails`
 
 Search emails with full metadata and threading support:
 
 ```python
-emails = search_emails_tool(
+emails = search_emails(
     mailbox="INBOX",
-    criteria="FROM 'lisa@example.com'"
+    criteria="FROM lisa@example.com"
 )
+# Returns: List of emails with id, subject, from, to, date, message_id, in_reply_to, references, body
 ```
 
 ### 2. `get_free_slots`
 
-Get available time slots:
+Get available time slots from your calendar:
 
 ```python
 free_slots = get_free_slots()
-# Returns: [{date: "2024-12-10", start: "10:00", end: "10:30", timezone: "Europe/Berlin"}, ...]
+# Returns: List of up to 50 available slots with date, start, end times, and timezone
 ```
 
-### 3. `save_draft_tool`
+### 3. `save_draft_and_block_slot`
 
-Save email drafts with threading:
-
-```python
-result = save_draft_tool(
-    subject="Meeting Confirmation",
-    body="Let's meet on Thursday at 10am",
-    to="lisa@example.com",
-    in_reply_to="<original-message-id>"
-)
-```
-
-### 4. `save_draft_and_block_slot`
-
-Complete workflow: block slot + save confirmation:
+Complete workflow: block calendar slot and save confirmation email draft:
 
 ```python
 result = save_draft_and_block_slot(
-    slot_index=0,
+    datetime="2025-12-15T14:00:00+01:00",
+    duration=30,
+    reason="Meeting with Lisa",
     subject="Meeting Confirmed",
-    body="Your meeting is confirmed for Thursday 10am",
+    body="Let's meet on Thursday at 2pm",
     to="lisa@example.com",
-    in_reply_to="<original-message-id>"
+    in_reply_to="<original-message-id@example.com>"
 )
+# Returns: {"success": true} or {"error": "message", "success": false}
 ```
 
 ## Testing

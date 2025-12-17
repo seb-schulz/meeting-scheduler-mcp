@@ -1,5 +1,5 @@
 {
-  "name": "meeting-scheduler-mcp-2",
+  "name": "meeting-scheduler-mcp",
   "image": "ghcr.io/sebatec-eu/python-devcontainer:1",
   "features": {
     "ghcr.io/devcontainers/features/python:1": {
